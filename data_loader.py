@@ -10,7 +10,7 @@ from foodtrucks.models import FoodTruck
 
 
 def parse_date(date_str, format1='%m/%d/%Y %I:%M:%S %p', format2='%Y%m%d'):
-    """Parse a date string using multiple formats."""
+    #Parse a date string using multiple formats.
     for fmt in (format1, format2):
         try:
             return datetime.strptime(date_str, fmt)
@@ -20,7 +20,7 @@ def parse_date(date_str, format1='%m/%d/%Y %I:%M:%S %p', format2='%Y%m%d'):
 
 
 def get_float(value):
-    """Convert a string to a float, or return None if the string is empty."""
+    #Convert a string to a float, or return None if the string is empty.
     try:
         return float(value)
     except ValueError:
@@ -28,7 +28,7 @@ def get_float(value):
 
 
 def get_int(value):
-    """Convert a string to an int, or return None if the string is empty."""
+    #Convert a string to an int, or return None if the string is empty.
     try:
         return int(value)
     except ValueError:
@@ -75,7 +75,7 @@ def load_data():
                 zip_codes=get_int(row['Zip Codes']),
                 neighborhoods_old=row['Neighborhoods (old)'],
             )
-    print("Data loaded  ")
+    print("Data loaded")
 
 if __name__ == '__main__':
     load_data()

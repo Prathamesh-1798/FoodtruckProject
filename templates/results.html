@@ -1,76 +1,22 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--    <title>Food Truck Results</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <h1>Nearby Food Trucks</h1>-->
-<!--    <ul>-->
-<!--        {% for truck in food_trucks %}-->
-<!--            <li>{{ truck.applicant }} - {{ truck.address }} ({{ truck.food_items }})</li>-->
-<!--        {% endfor %}-->
-<!--    </ul>-->
-<!--    <a href="{% url 'index' %}">Back to Search</a>-->
-<!--</body>-->
-<!--</html>-->
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--    <title>Food Truck Results</title>-->
-<!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHNgKFU4gDanCDBoywQzK8SFUer5SX3BI"></script>-->
-<!--    <script>-->
-<!--        function initMap() {-->
-<!--            var center = {lat: {{ latitude }}, lng: {{ longitude }}};-->
-<!--            var map = new google.maps.Map(document.getElementById('map'), {-->
-<!--                zoom: 14,-->
-<!--                center: center-->
-<!--            });-->
-
-<!--            var markers = [-->
-<!--                {% for truck in food_trucks %}-->
-<!--                {-->
-<!--                    position: {lat: {{ truck.latitude }}, lng: {{ truck.longitude }}},-->
-<!--                    title: "{{ truck.applicant }} - {{ truck.address }}"-->
-<!--                }{% if not forloop.last %},{% endif %}-->
-<!--                {% endfor %}-->
-<!--            ];-->
-
-<!--            markers.forEach(function(marker) {-->
-<!--                new google.maps.Marker({-->
-<!--                    position: marker.position,-->
-<!--                    map: map,-->
-<!--                    title: marker.title-->
-<!--                });-->
-<!--            });-->
-<!--        }-->
-<!--    </script>-->
-<!--</head>-->
-<!--<body onload="initMap()">-->
-<!--    <h1>Nearby Food Trucks</h1>-->
-<!--    <div id="map" style="height: 500px; width: 100%;"></div>-->
-<!--    <ul>-->
-<!--        {% for truck in food_trucks %}-->
-<!--            <li>{{ truck.applicant }} - {{ truck.address }} ({{ truck.food_items }})</li>-->
-<!--        {% endfor %}-->
-<!--    </ul>-->
-<!--    <a href="{% url 'index' %}">Back to Search</a>-->
-<!--</body>-->
-<!--</html>-->
-
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Food Truck Results</title>
+    <!-- Include Google Maps API with your API key -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHNgKFU4gDanCDBoywQzK8SFUer5SX3BI"></script>
     <script>
         function initMap() {
+            // Center coordinates for the map
             var center = {lat: {{ latitude }}, lng: {{ longitude }}};
+
+            // Initialize the map with center and zoom level
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 14,
                 center: center
             });
 
+            // Array to hold marker information for each food truck
             var markers = [
                 {% for truck in food_trucks %}
                 {
@@ -80,6 +26,7 @@
                 {% endfor %}
             ];
 
+            // Create markers for each food truck on the map
             markers.forEach(function(marker) {
                 new google.maps.Marker({
                     position: marker.position,
@@ -90,6 +37,7 @@
         }
     </script>
     <style>
+        /* CSS for styling */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -106,7 +54,10 @@
 </head>
 <body onload="initMap()">
     <h1>Nearby Food Trucks</h1>
+    <!-- Map container with dynamic height and width -->
     <div id="map" style="height: 500px; width: 100%;"></div>
+
+    <!-- Table to display food truck details -->
     <table>
         <thead>
             <tr>
@@ -117,6 +68,7 @@
         </thead>
         <tbody>
             {% for truck in food_trucks %}
+            <!-- Display each food truck's details in table rows -->
             <tr>
                 <td>{{ truck.applicant }}</td>
                 <td>{{ truck.address }}</td>
@@ -125,6 +77,8 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <!-- Link to navigate back to the search page -->
     <a href="{% url 'index' %}">Back to Search</a>
 </body>
 </html>
