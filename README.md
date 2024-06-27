@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Food Locator project is a web application designed to help users find nearby food trucks in San Francisco. Leveraging data from San Francisco's open dataset, the application provides both a map view and a list of food trucks based on user-provided coordinates.
+The Food Truck Locator project is a web application designed to help users find nearby food trucks in San Francisco. Leveraging data from San Francisco's open dataset, the application provides both a map view and a list of food trucks based on user-provided coordinates.
 
 ## Features
 
