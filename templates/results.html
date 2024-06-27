@@ -1,0 +1,130 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Food Truck Results</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Nearby Food Trucks</h1>-->
+<!--    <ul>-->
+<!--        {% for truck in food_trucks %}-->
+<!--            <li>{{ truck.applicant }} - {{ truck.address }} ({{ truck.food_items }})</li>-->
+<!--        {% endfor %}-->
+<!--    </ul>-->
+<!--    <a href="{% url 'index' %}">Back to Search</a>-->
+<!--</body>-->
+<!--</html>-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Food Truck Results</title>-->
+<!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHNgKFU4gDanCDBoywQzK8SFUer5SX3BI"></script>-->
+<!--    <script>-->
+<!--        function initMap() {-->
+<!--            var center = {lat: {{ latitude }}, lng: {{ longitude }}};-->
+<!--            var map = new google.maps.Map(document.getElementById('map'), {-->
+<!--                zoom: 14,-->
+<!--                center: center-->
+<!--            });-->
+
+<!--            var markers = [-->
+<!--                {% for truck in food_trucks %}-->
+<!--                {-->
+<!--                    position: {lat: {{ truck.latitude }}, lng: {{ truck.longitude }}},-->
+<!--                    title: "{{ truck.applicant }} - {{ truck.address }}"-->
+<!--                }{% if not forloop.last %},{% endif %}-->
+<!--                {% endfor %}-->
+<!--            ];-->
+
+<!--            markers.forEach(function(marker) {-->
+<!--                new google.maps.Marker({-->
+<!--                    position: marker.position,-->
+<!--                    map: map,-->
+<!--                    title: marker.title-->
+<!--                });-->
+<!--            });-->
+<!--        }-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body onload="initMap()">-->
+<!--    <h1>Nearby Food Trucks</h1>-->
+<!--    <div id="map" style="height: 500px; width: 100%;"></div>-->
+<!--    <ul>-->
+<!--        {% for truck in food_trucks %}-->
+<!--            <li>{{ truck.applicant }} - {{ truck.address }} ({{ truck.food_items }})</li>-->
+<!--        {% endfor %}-->
+<!--    </ul>-->
+<!--    <a href="{% url 'index' %}">Back to Search</a>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Truck Results</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHNgKFU4gDanCDBoywQzK8SFUer5SX3BI"></script>
+    <script>
+        function initMap() {
+            var center = {lat: {{ latitude }}, lng: {{ longitude }}};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 14,
+                center: center
+            });
+
+            var markers = [
+                {% for truck in food_trucks %}
+                {
+                    position: {lat: {{ truck.latitude }}, lng: {{ truck.longitude }}},
+                    title: "{{ truck.applicant }} - {{ truck.address }}"
+                }{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            ];
+
+            markers.forEach(function(marker) {
+                new google.maps.Marker({
+                    position: marker.position,
+                    map: map,
+                    title: marker.title
+                });
+            });
+        }
+    </script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body onload="initMap()">
+    <h1>Nearby Food Trucks</h1>
+    <div id="map" style="height: 500px; width: 100%;"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>Applicant</th>
+                <th>Address</th>
+                <th>Food Items</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for truck in food_trucks %}
+            <tr>
+                <td>{{ truck.applicant }}</td>
+                <td>{{ truck.address }}</td>
+                <td>{{ truck.food_items }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'index' %}">Back to Search</a>
+</body>
+</html>
