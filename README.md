@@ -1,4 +1,4 @@
-# Food Locator Project
+# Food Truck Locator Project
 
 ## Overview
 
