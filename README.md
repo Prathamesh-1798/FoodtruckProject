@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Food Truck Locator Project
 
 ## Overview
@@ -42,3 +43,6 @@ A list of food trucks with details is also provided below the map.
 
 
    
+=======
+# FoodtruckProject
+>>>>>>> b60b780cce61c8aa84f1aa183b9f6344ee3b0bda
