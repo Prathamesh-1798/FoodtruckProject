@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Food Truck Locator Project
 
 ## Overview
@@ -32,7 +32,7 @@ The Food Truck Locator project is a web application designed to help users find 
    cd foodtruck_project
 
 ## Usage
-**Search for Food Trucks:
+**Search for Food Trucks**:
 
 1. Enter latitude and longitude coordinates in the search form.
 2. Click the "Search" button to find nearby food trucks.
@@ -43,6 +43,3 @@ A list of food trucks with details is also provided below the map.
 
 
    
-=======
-# FoodtruckProject
->>>>>>> b60b780cce61c8aa84f1aa183b9f6344ee3b0bda
